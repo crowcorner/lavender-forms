@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Postnatal Intake Form — Lavender Health</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<style>:root{--purple:#DCC6DF;--purple-dark:#a887ad;--purple-deep:#743783;--purple-pale:#f9f5fa;--green:#BCC9AB;--green-dark:#6b7d58;--green-deep:#3b6a34;--green-pale:#f2f5ee;--text:#2a1a2e;--text-mid:#5c4a62;--text-light:#8a7490;--border:#d9cede;--bg:#faf8fb}*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Jost',sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.6}.form-container{max-width:760px;margin:0 auto;padding:40px 20px 80px}.form-header{text-align:center;margin-bottom:36px}.logo-mark{display:inline-flex;align-items:center;justify-content:center;gap:10px;margin-bottom:10px}.logo-icon{width:52px;height:52px}.logo-text-block{text-align:left}.logo-name{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;color:var(--purple-deep);letter-spacing:.04em;line-height:1.1}.logo-strapline{font-size:10px;font-weight:300;letter-spacing:.18em;text-transform:uppercase;color:var(--green-dark)}.form-title{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:500;color:var(--purple-deep);margin-bottom:6px}.form-subtitle{font-size:13px;color:var(--text-light);font-weight:300;letter-spacing:.04em}.divider{width:48px;height:2px;background:var(--green);margin:14px auto;border-radius:2px}.section{background:white;border:1px solid var(--border);border-radius:10px;padding:28px 28px 24px;margin-bottom:18px}.section-title{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:var(--purple-deep);margin-bottom:18px;padding-bottom:10px;border-bottom:1px solid var(--purple);display:flex;align-items:center;gap:8px}.section-title::before{content:'';display:inline-block;width:4px;height:18px;background:var(--green);border-radius:2px;flex-shrink:0}.field-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}.field-row.single{grid-template-columns:1fr}.field-row.triple{grid-template-columns:1fr 1fr 1fr}@media(max-width:560px){.field-row,.field-row.triple{grid-template-columns:1fr}}.field{display:flex;flex-direction:column;gap:5px}label{font-size:12px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--text-mid)}label .req{color:var(--purple-deep);margin-left:2px}input[type=text],input[type=email],input[type=tel],input[type=date],input[type=number],select,textarea{font-family:'Jost',sans-serif;font-size:14px;color:var(--text);background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:10px 12px;outline:none;transition:border-color .2s;width:100%}input:focus,select:focus,textarea:focus{border-color:var(--purple-dark);background:white}textarea{resize:vertical;min-height:80px}select{cursor:pointer}.radio-group,.check-group{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}.radio-group label,.check-group label{font-size:13px;text-transform:none;letter-spacing:0;font-weight:400;color:var(--text);display:flex;align-items:center;gap:6px;cursor:pointer;background:var(--purple-pale);border:1px solid var(--purple);border-radius:20px;padding:5px 12px;transition:background .15s}.radio-group input,.check-group input{width:auto;accent-color:var(--purple-deep)}.radio-group label:has(input:checked),.check-group label:has(input:checked){background:var(--purple);border-color:var(--purple-dark)}.consent-box{background:var(--purple-pale);border:1px solid var(--purple);border-radius:8px;padding:16px 18px;margin-bottom:14px}.consent-box p{font-size:13px;color:var(--text-mid);margin-bottom:10px;line-height:1.65}.consent-check{display:flex;align-items:flex-start;gap:10px;cursor:pointer}.consent-check input{width:auto;margin-top:2px;accent-color:var(--purple-deep);flex-shrink:0}.consent-check span{font-size:13px;color:var(--text);font-weight:500;line-height:1.5}.photo-box{background:var(--green-pale);border:1px solid var(--green);border-radius:8px;padding:18px 20px;margin-bottom:14px}.photo-box h4{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:600;color:var(--green-deep);margin-bottom:8px}.photo-box p{font-size:13px;color:var(--text-mid);line-height:1.65;margin-bottom:12px}.photo-options{display:flex;flex-direction:column;gap:8px}.photo-option{display:flex;align-items:flex-start;gap:10px;cursor:pointer}.photo-option input{width:auto;margin-top:2px;accent-color:var(--green-deep);flex-shrink:0}.photo-option span{font-size:13px;color:var(--text);line-height:1.5}.cancel-box{background:#fff8f0;border:1px solid #f0d9b5;border-left:4px solid #c87d30;border-radius:0 8px 8px 0;padding:14px 18px;margin-bottom:14px}.cancel-box p{font-size:13px;color:#6b4a1e;line-height:1.6;margin-bottom:8px}.cancel-check{display:flex;align-items:flex-start;gap:10px;cursor:pointer}.cancel-check input{width:auto;margin-top:2px;accent-color:#c87d30;flex-shrink:0}.cancel-check span{font-size:13px;font-weight:500;color:#4a2e0a;line-height:1.5}.gdpr-box{background:#f3f4f8;border:1px solid #d0d4e8;border-radius:8px;padding:16px 18px;margin-bottom:14px}.gdpr-box h4{font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:#3c4270;margin-bottom:8px}.gdpr-box p{font-size:12px;color:#555b7a;line-height:1.7;margin-bottom:6px}.gdpr-check{display:flex;align-items:flex-start;gap:10px;margin-top:10px;cursor:pointer}.gdpr-check input{width:auto;margin-top:2px;accent-color:#3c4270;flex-shrink:0}.gdpr-check span{font-size:12px;font-weight:500;color:#2a2f52;line-height:1.5}.declaration-box{background:var(--purple-pale);border:2px solid var(--purple-deep);border-radius:8px;padding:20px;margin-bottom:14px}.declaration-box p{font-size:13px;color:var(--text-mid);line-height:1.7;margin-bottom:14px}.submit-btn{display:block;width:100%;background:var(--purple-deep);color:white;font-family:'Jost',sans-serif;font-size:14px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;border:none;border-radius:8px;padding:16px;cursor:pointer;transition:background .2s;margin-top:24px}.submit-btn:hover{background:var(--purple-dark)}.submit-btn:disabled{background:#ccc;cursor:not-allowed}.form-footer-note{text-align:center;font-size:11px;color:var(--text-light);margin-top:32px;line-height:1.7}.success-screen{display:none;text-align:center;padding:60px 20px}.success-screen h2{font-family:'Cormorant Garamond',serif;font-size:32px;color:var(--purple-deep);margin-bottom:16px}.success-screen p{font-size:14px;color:var(--text-mid);line-height:1.7}.success-icon{width:64px;height:64px;background:var(--green);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px}.baby-loss-note{background:var(--green-pale);border-left:3px solid var(--green);padding:12px 16px;border-radius:0 6px 6px 0;margin-top:8px;font-size:13px;color:var(--text-mid);font-style:italic;line-height:1.6}</style>
+</head>
+<body>
+<div class="form-container">
+<div id="success-screen" class="success-screen">
+  <div class="success-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  <h2>Thank you</h2>
+  <p>Your form has been submitted successfully.<br>Michelle will be in touch before your appointment.<br><br>We look forward to welcoming you to The Lavender Room.</p>
+</div>
+<div id="form-wrap">
+<div class="form-header">
+  <div class="logo-mark">
+    <svg class="logo-icon" viewBox="0 0 52 52" fill="none"><circle cx="26" cy="26" r="25" fill="#DCC6DF" stroke="#743783" stroke-width="1.5"/><path d="M26 11 C21 11 17 15 17 22 C17 31 26 41 26 41 C26 41 35 31 35 22 C35 15 31 11 26 11Z" fill="#743783" opacity="0.18"/><path d="M26 11 C21 11 17 15 17 22 C17 31 26 41 26 41 C26 41 35 31 35 22 C35 15 31 11 26 11Z" stroke="#743783" stroke-width="1.5" fill="none"/><circle cx="26" cy="22" r="5" fill="#BCC9AB"/></svg>
+    <div class="logo-text-block"><div class="logo-name">Lavender Health</div><div class="logo-strapline">Specialist Therapy for a Woman's Lifecycle</div></div>
+  </div>
+  <div class="divider"></div>
+  <h1 class="form-title">Postnatal Intake &amp; Consent Form</h1>
+  <p class="form-subtitle">Please complete in full before your first appointment</p>
+</div>
+
+<div class="section">
+  <div class="section-title">Personal Details</div>
+  <div class="field-row"><div class="field"><label>First Name <span class="req">*</span></label><input type="text" id="firstName" required></div><div class="field"><label>Last Name <span class="req">*</span></label><input type="text" id="lastName" required></div></div>
+  <div class="field-row"><div class="field"><label>Date of Birth <span class="req">*</span></label><input type="date" id="dob" required></div><div class="field"><label>Phone <span class="req">*</span></label><input type="tel" id="phone" required></div></div>
+  <div class="field-row single"><div class="field"><label>Email <span class="req">*</span></label><input type="email" id="email" required></div></div>
+  <div class="field-row"><div class="field"><label>Emergency Contact Name</label><input type="text" id="ecName"></div><div class="field"><label>Emergency Contact Phone</label><input type="tel" id="ecPhone"></div></div>
+</div>
+
+<div class="section">
+  <div class="section-title">Birth &amp; Baby Details</div>
+  <div class="field-row triple">
+    <div class="field"><label>Baby's Date of Birth <span class="req">*</span></label><input type="date" id="babyDob" required></div>
+    <div class="field"><label>Birth Weight <span class="req">*</span></label><input type="text" id="birthWeight" required placeholder="e.g. 7lb 4oz"></div>
+    <div class="field"><label>Weeks at Delivery <span class="req">*</span></label><input type="number" id="weeksDelivery" min="20" max="44" required></div>
+  </div>
+  <div class="field-row single">
+    <div class="field"><label>Early, on time or overdue? <span class="req">*</span></label>
+      <div class="radio-group">
+        <label><input type="radio" name="timing" value="Premature (before 37 weeks)" required> Premature</label>
+        <label><input type="radio" name="timing" value="Term (37-40 weeks)"> Term</label>
+        <label><input type="radio" name="timing" value="Overdue (40+ weeks)"> Overdue</label>
+      </div>
+    </div>
+  </div>
+  <div class="field-row single">
+    <div class="field"><label>Type of Birth <span class="req">*</span></label>
+      <div class="radio-group">
+        <label><input type="radio" name="birthType" value="Vaginal" required> Vaginal</label>
+        <label><input type="radio" name="birthType" value="C-section (planned)"> C-section (planned)</label>
+        <label><input type="radio" name="birthType" value="C-section (emergency)"> C-section (emergency)</label>
+        <label><input type="radio" name="birthType" value="Assisted - forceps"> Forceps</label>
+        <label><input type="radio" name="birthType" value="Assisted - ventouse"> Ventouse</label>
+      </div>
+    </div>
+  </div>
+  <div class="field-row single">
+    <div class="field"><label>Any perineal tearing or episiotomy?</label>
+      <div class="radio-group">
+        <label><input type="radio" name="tear" value="None"> None</label>
+        <label><input type="radio" name="tear" value="1st degree"> 1st degree</label>
+        <label><input type="radio" name="tear" value="2nd degree"> 2nd degree</label>
+        <label><input type="radio" name="tear" value="3rd degree"> 3rd degree</label>
+        <label><input type="radio" name="tear" value="4th degree"> 4th degree</label>
+        <label><input type="radio" name="tear" value="Episiotomy"> Episiotomy</label>
+      </div>
+    </div>
+  </div>
+  <div class="field-row single">
+    <div class="field"><label>C-section scar to be assessed?</label>
+      <div class="radio-group">
+        <label><input type="radio" name="cscar" value="Yes"> Yes</label>
+        <label><input type="radio" name="cscar" value="No"> No</label>
+      </div>
+    </div>
+  </div>
+  <div class="field-row single">
+    <div class="field"><label>Currently breastfeeding? <span class="req">*</span></label>
+      <div class="radio-group">
+        <label><input type="radio" name="bf" value="Yes - exclusively" required> Yes — exclusively</label>
+        <label><input type="radio" name="bf" value="Yes - combination"> Yes — combination</label>
+        <label><input type="radio" name="bf" value="No - formula"> No — formula</label>
+        <label><input type="radio" name="bf" value="No - stopped"> No — stopped</label>
+      </div>
+    </div>
+  </div>
+  <div class="field-row single"><div class="field"><label>Any complications during pregnancy?</label><textarea id="pregComp" rows="2" placeholder="Or write None"></textarea></div></div>
+  <div class="field-row single"><div class="field"><label>Any birth complications?</label><textarea id="birthComp" rows="2" placeholder="Or write None"></textarea></div></div>
+</div>
+
+<div class="section">
+  <div class="section-title">How Are You Feeling Now?</div>
+  <div class="field-row single"><div class="field"><label>Any pain at the moment? <span class="req">*</span></label><textarea id="pain" rows="2" required placeholder="Location and severity 1-10 — or write None"></textarea></div></div>
+  <div class="field-row single"><div class="field"><label>Any concerns about your physical recovery?</label><textarea id="physConcerns" rows="2"></textarea></div></div>
+  <div class="field-row single"><div class="field"><label>Any concerns about your emotional wellbeing?</label><textarea id="emotConcerns" rows="2" placeholder="This is a safe space — share as much or as little as you wish"></textarea></div></div>
+  <div class="field-row single">
+    <div class="field"><label>Please tick any that currently apply</label>
+      <div class="check-group" style="margin-top:8px">
+        <label><input type="checkbox" class="cond" value="Diastasis recti"> Diastasis recti</label>
+        <label><input type="checkbox" class="cond" value="Pelvic floor issues"> Pelvic floor issues</label>
+        <label><input type="checkbox" class="cond" value="Pelvic pain"> Pelvic pain</label>
+        <label><input type="checkbox" class="cond" value="Back pain"> Back pain</label>
+        <label><input type="checkbox" class="cond" value="Postnatal anxiety"> Postnatal anxiety</label>
+        <label><input type="checkbox" class="cond" value="Postnatal depression"> Postnatal depression</label>
+        <label><input type="checkbox" class="cond" value="Birth trauma"> Birth trauma</label>
+        <label><input type="checkbox" class="cond" value="Mastitis"> Mastitis / breast issues</label>
+        <label><input type="checkbox" class="cond" value="Extreme fatigue"> Extreme fatigue</label>
+        <label><input type="checkbox" class="cond" value="Baby loss"> Baby loss</label>
+      </div>
+    </div>
+  </div>
+  <div class="baby-loss-note">If you have ticked 'baby loss' above, please know that Michelle volunteers with a baby loss charity and has specialist understanding of this experience. Your sessions will be held with complete sensitivity. You are warmly welcome here.</div>
+</div>
+
+<div class="section">
+  <div class="section-title">GP &amp; Medical Details</div>
+  <div class="field-row"><div class="field"><label>GP Name</label><input type="text" id="gpName"></div><div class="field"><label>GP Surgery</label><input type="text" id="gpSurgery"></div></div>
+  <div class="field-row single">
+    <div class="field"><label>Had your 6-week postnatal check?</label>
+      <div class="radio-group">
+        <label><input type="radio" name="sixWeek" value="Yes"> Yes</label>
+        <label><input type="radio" name="sixWeek" value="No"> No</label>
+        <label><input type="radio" name="sixWeek" value="Booked"> Booked</label>
+      </div>
+    </div>
+  </div>
+  <div class="field-row single"><div class="field"><label>Current Medications</label><textarea id="meds" rows="2" placeholder="Or write None"></textarea></div></div>
+  <div class="field-row single"><div class="field"><label>Allergies or skin sensitivities</label><textarea id="allergies" rows="2" placeholder="Nut oils, essential oils, latex — or write None"></textarea></div></div>
+  <div class="field-row single"><div class="field"><label>What are your main goals from treatment?</label><textarea id="goals" rows="3"></textarea></div></div>
+</div>
+
+<div class="section">
+  <div class="section-title">Consent &amp; Agreements</div>
+  <div class="cancel-box">
+    <p><strong>Cancellation Policy</strong></p>
+    <p>Please give at least <strong>24 hours' notice</strong> to cancel or reschedule. Sessions cancelled with less than 24 hours' notice will be charged in full and the session forfeited. Michelle understands life with a new baby is unpredictable — please contact her as early as possible if circumstances change.</p>
+    <label class="cancel-check"><input type="checkbox" id="cancelConsent" required><span>I have read and agree to the cancellation policy.</span></label>
+  </div>
+  <div class="photo-box">
+    <h4>Photography &amp; Social Media Consent</h4>
+    <p>Progress photography — particularly of C-section scars and postnatal recovery — helps other women understand what specialist postnatal care can achieve. Your face will <strong>never</strong> be shown. Your support is truly appreciated.</p>
+    <div class="photo-options">
+      <label class="photo-option"><input type="checkbox" id="photoClinic"><span>I consent to anonymous progress photos for clinical records.</span></label>
+      <label class="photo-option"><input type="checkbox" id="photoSocial"><span>I am happy for anonymous images to be shared on Lavender Health's social media.</span></label>
+    </div>
+  </div>
+  <div class="consent-box">
+    <p>I confirm the information provided is accurate. I understand it is my responsibility to inform Michelle of any changes during treatment.</p>
+    <label class="consent-check"><input type="checkbox" id="treatConsent" required><span>I consent to receive treatment from Michelle Burke at Lavender Health and may withdraw consent at any time.</span></label>
+  </div>
+  <div class="gdpr-box">
+    <h4>Data Protection &amp; Privacy (GDPR)</h4>
+    <p>Lavender Health (Michelle Burke) is the data controller. Your data is held solely to provide safe, effective care, stored securely for a minimum of 7 years, and will never be sold or shared without consent, except where required by law.</p>
+    <label class="gdpr-check"><input type="checkbox" id="gdprConsent" required><span>I consent to Lavender Health holding my personal data for the purposes described above.</span></label>
+  </div>
+  <div class="declaration-box">
+    <p>By typing your full name below you confirm that all information provided is accurate and that you have read, understood and agreed to everything above.</p>
+    <div class="field-row">
+      <div class="field"><label>Full Name (acts as your signature) <span class="req">*</span></label><input type="text" id="fullName" required placeholder="Type your full name"></div>
+      <div class="field"><label>Today's Date <span class="req">*</span></label><input type="date" id="sigDate" required></div>
+    </div>
+  </div>
+</div>
+
+<button class="submit-btn" id="submitBtn" onclick="submitForm()">Submit Form</button>
+</div>
+<div class="form-footer-note">Lavender Health &middot; The Lavender Room &middot; Strood, Kent ME2 &middot; lavender-health.com &middot; @thelavenderroomhc</div>
+</div>
+<script>
+emailjs.init("4_kp2N4xjsXFaLCEJ");
+function getChecked(cls){return Array.from(document.querySelectorAll('.'+cls+':checked')).map(e=>e.value).join(', ')||'None';}
+function getRadio(name){const e=document.querySelector('input[name="'+name+'"]:checked');return e?e.value:'Not answered';}
+function val(id){const e=document.getElementById(id);return e&&e.value?e.value:'Not provided';}
+function checked(id){const e=document.getElementById(id);return e&&e.checked?'Yes':'No';}
+function submitForm(){
+  if(!document.getElementById('firstName').value.trim()){alert('Please enter First Name');return;}
+  if(!document.getElementById('lastName').value.trim()){alert('Please enter Last Name');return;}
+  if(!document.getElementById('dob').value){alert('Please enter Date of Birth');return;}
+  if(!document.getElementById('phone').value.trim()){alert('Please enter Phone');return;}
+  if(!document.getElementById('email').value.trim()){alert('Please enter Email');return;}
+  if(!document.getElementById('babyDob').value){alert('Please enter Baby Date of Birth');return;}
+  if(!document.getElementById('birthWeight').value.trim()){alert('Please enter Birth Weight');return;}
+  if(!document.getElementById('weeksDelivery').value){alert('Please enter Weeks at Delivery');return;}
+  if(!document.getElementById('pain').value.trim()){alert('Please complete Current Pain field');return;}
+  if(!document.getElementById('fullName').value.trim()){alert('Please enter your Full Name');return;}
+  if(!document.getElementById('sigDate').value){alert('Please enter Today\'s Date');return;}
+  if(!document.getElementById('cancelConsent').checked){alert('Please agree to the cancellation policy.');return;}
+  if(!document.getElementById('treatConsent').checked){alert('Please confirm treatment consent.');return;}
+  if(!document.getElementById('gdprConsent').checked){alert('Please confirm GDPR consent.');return;}
+  const btn=document.getElementById('submitBtn');
+  btn.disabled=true;btn.textContent='Sending...';
+  emailjs.send('service_tl6dtli','template_tscdrwh',{
+    to_email:'michelle@lavender-health.com',
+    form_type:'Postnatal Intake Form',
+    first_name:val('firstName'),last_name:val('lastName'),dob:val('dob'),
+    phone:val('phone'),client_email:val('email'),ec_name:val('ecName'),ec_phone:val('ecPhone'),
+    baby_dob:val('babyDob'),birth_weight:val('birthWeight'),weeks_delivery:val('weeksDelivery'),
+    timing:getRadio('timing'),birth_type:getRadio('birthType'),tear:getRadio('tear'),
+    cscar:getRadio('cscar'),breastfeeding:getRadio('bf'),
+    preg_comp:val('pregComp'),birth_comp:val('birthComp'),
+    pain:val('pain'),phys_concerns:val('physConcerns'),emot_concerns:val('emotConcerns'),
+    conditions:getChecked('cond'),gp_name:val('gpName'),gp_surgery:val('gpSurgery'),
+    six_week:getRadio('sixWeek'),medications:val('meds'),allergies:val('allergies'),goals:val('goals'),
+    cancel_consent:checked('cancelConsent'),photo_clinic:checked('photoClinic'),
+    photo_social:checked('photoSocial'),treat_consent:checked('treatConsent'),
+    gdpr_consent:checked('gdprConsent'),full_name:val('fullName'),sig_date:val('sigDate')
+  }).then(()=>{
+    document.getElementById('form-wrap').style.display='none';
+    document.getElementById('success-screen').style.display='block';
+    window.scrollTo(0,0);
+  }).catch(err=>{
+    console.error(err);btn.disabled=false;btn.textContent='Submit Form';
+    alert('There was a problem. Please try again or contact michelle@lavender-health.com');
+  });
+}
+</script>
+</body>
+</html>
