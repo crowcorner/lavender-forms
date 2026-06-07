@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pregnancy Intake Form — Lavender Health</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<style>
+:root{--purple:#DCC6DF;--purple-dark:#a887ad;--purple-deep:#743783;--purple-pale:#f9f5fa;--green:#BCC9AB;--green-dark:#6b7d58;--green-deep:#3b6a34;--green-pale:#f2f5ee;--text:#2a1a2e;--text-mid:#5c4a62;--text-light:#8a7490;--border:#d9cede;--bg:#faf8fb}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Jost',sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.6}
+.form-container{max-width:760px;margin:0 auto;padding:40px 20px 80px}
+.form-header{text-align:center;margin-bottom:36px}
+.logo-mark{display:inline-flex;align-items:center;justify-content:center;gap:10px;margin-bottom:10px}
+.logo-icon{width:52px;height:52px}
+.logo-text-block{text-align:left}
+.logo-name{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;color:var(--purple-deep);letter-spacing:.04em;line-height:1.1}
+.logo-strapline{font-size:10px;font-weight:300;letter-spacing:.18em;text-transform:uppercase;color:var(--green-dark)}
+.form-title{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:500;color:var(--purple-deep);margin-bottom:6px}
+.form-subtitle{font-size:13px;color:var(--text-light);font-weight:300;letter-spacing:.04em}
+.divider{width:48px;height:2px;background:var(--green);margin:14px auto;border-radius:2px}
+.section{background:white;border:1px solid var(--border);border-radius:10px;padding:28px 28px 24px;margin-bottom:18px}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:var(--purple-deep);margin-bottom:18px;padding-bottom:10px;border-bottom:1px solid var(--purple);display:flex;align-items:center;gap:8px}
+.section-title::before{content:'';display:inline-block;width:4px;height:18px;background:var(--green);border-radius:2px;flex-shrink:0}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.field-row.single{grid-template-columns:1fr}
+.field-row.triple{grid-template-columns:1fr 1fr 1fr}
+@media(max-width:560px){.field-row,.field-row.triple{grid-template-columns:1fr}}
+.field{display:flex;flex-direction:column;gap:5px}
+label{font-size:12px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--text-mid)}
+label .req{color:var(--purple-deep);margin-left:2px}
+input[type=text],input[type=email],input[type=tel],input[type=date],input[type=number],select,textarea{font-family:'Jost',sans-serif;font-size:14px;color:var(--text);background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:10px 12px;outline:none;transition:border-color .2s;width:100%}
+input:focus,select:focus,textarea:focus{border-color:var(--purple-dark);background:white}
+textarea{resize:vertical;min-height:80px}
+.radio-group,.check-group{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+.radio-group label,.check-group label{font-size:13px;text-transform:none;letter-spacing:0;font-weight:400;color:var(--text);display:flex;align-items:center;gap:6px;cursor:pointer;background:var(--purple-pale);border:1px solid var(--purple);border-radius:20px;padding:5px 12px;transition:background .15s}
+.radio-group input,.check-group input{width:auto;accent-color:var(--purple-deep)}
+.radio-group label:has(input:checked),.check-group label:has(input:checked){background:var(--purple);border-color:var(--purple-dark)}
+.consent-box{background:var(--purple-pale);border:1px solid var(--purple);border-radius:8px;padding:16px 18px;margin-bottom:14px}
+.consent-box p{font-size:13px;color:var(--text-mid);margin-bottom:10px;line-height:1.65}
+.consent-check{display:flex;align-items:flex-start;gap:10px;cursor:pointer}
+.consent-check input{width:auto;margin-top:2px;accent-color:var(--purple-deep);flex-shrink:0}
+.consent-check span{font-size:13px;color:var(--text);font-weight:500;line-height:1.5}
+.photo-box{background:var(--green-pale);border:1px solid var(--green);border-radius:8px;padding:18px 20px;margin-bottom:14px}
+.photo-box h4{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:600;color:var(--green-deep);margin-bottom:8px}
+.photo-box p{font-size:13px;color:var(--text-mid);line-height:1.65;margin-bottom:12px}
+.photo-options{display:flex;flex-direction:column;gap:8px}
+.photo-option{display:flex;align-items:flex-start;gap:10px;cursor:pointer}
+.photo-option input{width:auto;margin-top:2px;accent-color:var(--green-deep);flex-shrink:0}
+.photo-option span{font-size:13px;color:var(--text);line-height:1.5}
+.cancel-box{background:#fff8f0;border:1px solid #f0d9b5;border-left:4px solid #c87d30;border-radius:0 8px 8px 0;padding:14px 18px;margin-bottom:14px}
+.cancel-box p{font-size:13px;color:#6b4a1e;line-height:1.6;margin-bottom:8px}
+.cancel-check{display:flex;align-items:flex-start;gap:10px;cursor:pointer}
+.cancel-check input{width:auto;margin-top:2px;accent-color:#c87d30;flex-shrink:0}
+.cancel-check span{font-size:13px;font-weight:500;color:#4a2e0a;line-height:1.5}
+.gdpr-box{background:#f3f4f8;border:1px solid #d0d4e8;border-radius:8px;padding:16px 18px;margin-bottom:14px}
+.gdpr-box h4{font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:#3c4270;margin-bottom:8px}
+.gdpr-box p{font-size:12px;color:#555b7a;line-height:1.7;margin-bottom:6px}
+.gdpr-check{display:flex;align-items:flex-start;gap:10px;margin-top:10px;cursor:pointer}
+.gdpr-check input{width:auto;margin-top:2px;accent-color:#3c4270;flex-shrink:0}
+.gdpr-check span{font-size:12px;font-weight:500;color:#2a2f52;line-height:1.5}
+.declaration-box{background:var(--purple-pale);border:2px solid var(--purple-deep);border-radius:8px;padding:20px;margin-bottom:14px}
+.declaration-box p{font-size:13px;color:var(--text-mid);line-height:1.7;margin-bottom:14px}
+.submit-btn{display:block;width:100%;background:var(--purple-deep);color:white;font-family:'Jost',sans-serif;font-size:14px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;border:none;border-radius:8px;padding:16px;cursor:pointer;transition:background .2s;margin-top:24px}
+.submit-btn:hover{background:var(--purple-dark)}
+.submit-btn:disabled{background:#ccc;cursor:not-allowed}
+.form-footer-note{text-align:center;font-size:11px;color:var(--text-light);margin-top:32px;line-height:1.7}
+.success-screen{display:none;text-align:center;padding:60px 20px}
+.success-screen h2{font-family:'Cormorant Garamond',serif;font-size:32px;color:var(--purple-deep);margin-bottom:16px}
+.success-screen p{font-size:14px;color:var(--text-mid);line-height:1.7}
+.success-icon{width:64px;height:64px;background:var(--green);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px}
+</style>
+</head>
+<body>
+<div class="form-container">
+
+<div id="success-screen" class="success-screen">
+  <div class="success-icon">
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </div>
+  <h2>Thank you</h2>
+  <p>Your intake form has been submitted successfully.<br>Michelle will be in touch before your appointment.<br><br>We look forward to welcoming you to The Lavender Room.</p>
+</div>
+
+<div id="form-wrap">
+<div class="form-header">
+  <div class="logo-mark">
+    <svg class="logo-icon" viewBox="0 0 52 52" fill="none">
+      <circle cx="26" cy="26" r="25" fill="#DCC6DF" stroke="#743783" stroke-width="1.5"/>
+      <path d="M26 11 C21 11 17 15 17 22 C17 31 26 41 26 41 C26 41 35 31 35 22 C35 15 31 11 26 11Z" fill="#743783" opacity="0.18"/>
+      <path d="M26 11 C21 11 17 15 17 22 C17 31 26 41 26 41 C26 41 35 31 35 22 C35 15 31 11 26 11Z" stroke="#743783" stroke-width="1.5" fill="none"/>
+      <circle cx="26" cy="22" r="5" fill="#BCC9AB"/>
+    </svg>
+    <div class="logo-text-block">
+      <div class="logo-name">Lavender Health</div>
+      <div class="logo-strapline">Specialist Therapy for a Woman's Lifecycle</div>
+    </div>
+  </div>
+  <div class="divider"></div>
+  <h1 class="form-title">Pregnancy Intake &amp; Consent Form</h1>
+  <p class="form-subtitle">Please complete in full before your first appointment</p>
+</div>
+
+<div class="section">
+  <div class="section-title">Personal Details</div>
+  <div class="field-row">
+    <div class="field"><label>First Name <span class="req">*</span></label><input type="text" id="firstName" required></div>
+    <div class="field"><label>Last Name <span class="req">*</span></label><input type="text" id="lastName" required></div>
+  </div>
+  <div class="field-row">
+    <div class="field"><label>Date of Birth <span class="req">*</span></label><input type="date" id="dob" required></div>
+    <div class="field"><label>Phone <span class="req">*</span></label><input type="tel" id="phone" required></div>
+  </div>
+  <div class="field-row single">
+    <div class="field"><label>Email <span class="req">*</span></label><input type="email" id="email" required></div>
+  </div>
+  <div class="field-row single">
+    <div class="field"><label>Address</label><input type="text" id="address"></div>
+  </div>
+  <div class="field-row">
+    <div class="field"><label>Emergency Contact Name</label><input type="text" id="ecName"></div>
+    <div class="field"><label>Emergency Contact Phone</label><input type="tel" id="ecPhone"></div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">Pregnancy Details</div>
+  <div class="field-row triple">
+    <div class="field"><label>Weeks Pregnant <span class="req">*</span></label><input type="number" id="weeks" min="1" max="42" required></div>
+    <div class="field"><label>Due Date <span class="req">*</span></label><input type="date" id="dueDate" required></div>
+    <div class="field"><label>Previous Pregnancies</label><input type="number" id="prevPreg" min="0"></div>
+  </div>
+  <div class="field-row">
+    <div class="field"><label>Pregnancy Type</label>
+      <div class="radio-group">
+        <label><input type="radio" name="pregType" value="Singleton"> Singleton</label>
+        <label><input type="radio" name="pregType" value="Twins"> Twins</label>
+        <label><input type="radio" name="pregType" value="Triplets+"> Triplets+</label>
+      </div>
+    </div>
+    <div class="field"><label>IVF Pregnancy?</label>
+      <div class="radio-group">
+        <label><input type="radio" name="ivf" value="Yes"> Yes</label>
+        <label><input type="radio" name="ivf" value="No"> No</label>
+      </div>
+    </div>
+  </div>
+  <div class="field-row">
+    <div class="field"><label>Midwife / Consultant</label><input type="text" id="midwife"></div>
+    <div class="field"><label>Hospital / Maternity Unit</label><input type="text" id="hospital"></div>
+  </div>
+  <div class="field-row single">
+    <div class="field"><label>High risk pregnancy?</label>
+      <div class="radio-group">
+        <label><input type="radio" name="highRisk" value="No"> No</label>
+        <label><input type="radio" name="highRisk" value="Yes — detail below"> Yes — detail below</label>
+        <label><input type="radio" name="highRisk" value="Unsure"> Unsure</label>
+      </div>
+    </div>
+  </div>
+  <div class="field-row single">
+    <div class="field"><label>Advised against massage or manual therapy?</label>
+      <div class="radio-group">
+        <label><input type="radio" name="advised" value="No"> No</label>
+        <label><input type="radio" name="advised" value="Yes — detail below"> Yes — detail below</label>
+      </div>
+    </div>
+  </div>
+  <div class="field-row single">
+    <div class="field"><label>Details if applicable</label><textarea id="riskDetails" rows="2"></textarea></div>
+  </div>
+  <div class="field-row single">
+    <div class="field"><label>Previous pregnancy losses or complications?</label>
+      <div class="radio-group">
+        <label><input type="radio" name="prevLoss" value="No"> No</label>
+        <label><input type="radio" name="prevLoss" value="Yes — detail below"> Yes — detail below</label>
+      </div>
+    </div>
+  </div>
+  <div class="field-row single">
+    <div class="field"><label>Details (optional)</label><textarea id="lossDetails" rows="2"></textarea></div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">Current Symptoms</div>
+  <div class="field-row single">
+    <div class="field"><label>Tick all that apply</label>
+      <div class="check-group" style="margin-top:8px">
+        <label><input type="checkbox" class="sym" value="Morning sickness"> Morning sickness</label>
+        <label><input type="checkbox" class="sym" value="Heartburn"> Heartburn</label>
+        <label><input type="checkbox" class="sym" value="SPD/PGP"> SPD / PGP</label>
+        <label><input type="checkbox" class="sym" value="Back pain"> Back pain</label>
+        <label><input type="checkbox" class="sym" value="Hip pain"> Hip pain</label>
+        <label><input type="checkbox" class="sym" value="Leg cramps"> Leg cramps</label>
+        <label><input type="checkbox" class="sym" value="Swelling"> Swelling / oedema</label>
+        <label><input type="checkbox" class="sym" value="Varicose veins"> Varicose veins</label>
+        <label><input type="checkbox" class="sym" value="Sciatica"> Sciatica</label>
+        <label><input type="checkbox" class="sym" value="Fatigue"> Extreme fatigue</label>
+        <label><input type="checkbox" class="sym" value="Insomnia"> Sleep difficulties</label>
+        <label><input type="checkbox" class="sym" value="Anxiety"> Anxiety</label>
+        <label><input type="checkbox" class="sym" value="Low mood"> Low mood</label>
+        <label><input type="checkbox" class="sym" value="Rib pain"> Rib pain</label>
+        <label><input type="checkbox" class="sym" value="Carpal tunnel"> Carpal tunnel</label>
+        <label><input type="checkbox" class="sym" value="Restless legs"> Restless legs</label>
+      </div>
+    </div>
+  </div>
+  <div class="field-row single">
+    <div class="field"><label>Current pain — location and severity (1–10)</label><textarea id="pain" rows="2" placeholder="e.g. lower back 6/10, hips 4/10 — or write None"></textarea></div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">Medical Conditions</div>
+  <div class="field-row single">
+    <div class="field"><label>Tick any that apply</label>
+      <div class="check-group" style="margin-top:8px">
+        <label><input type="checkbox" class="cond" value="Placenta praevia"> Placenta praevia</label>
+        <label><input type="checkbox" class="cond" value="Pre-eclampsia"> Pre-eclampsia</label>
+        <label><input type="checkbox" class="cond" value="Gestational hypertension"> Gestational hypertension</label>
+        <label><input type="checkbox" class="cond" value="Gestational diabetes"> Gestational diabetes</label>
+        <label><input type="checkbox" class="cond" value="DVT/clotting"> DVT / clotting issues</label>
+        <label><input type="checkbox" class="cond" value="Cervical incompetence"> Cervical incompetence</label>
+        <label><input type="checkbox" class="cond" value="Threatened miscarriage"> Threatened miscarriage</label>
+        <label><input type="checkbox" class="cond" value="IUGR"> IUGR</label>
+        <label><input type="checkbox" class="cond" value="Unexplained bleeding"> Unexplained bleeding</label>
+        <label><input type="checkbox" class="cond" value="Reduced foetal movement"> Reduced foetal movement</label>
+        <label><input type="checkbox" class="cond" value="Anaemia"> Anaemia</label>
+        <label><input type="checkbox" class="cond" value="Obstetric cholestasis"> Obstetric cholestasis</label>
+        <label><input type="checkbox" class="cond" value="Autoimmune condition"> Autoimmune condition</label>
+      </div>
+    </div>
+  </div>
+  <div class="field-row single">
+    <div class="field"><label>Pre-existing conditions</label><textarea id="preExisting" rows="2" placeholder="Or write None"></textarea></div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">GP &amp; Medications</div>
+  <div class="field-row">
+    <div class="field"><label>GP Name</label><input type="text" id="gpName"></div>
+    <div class="field"><label>GP Surgery</label><input type="text" id="gpSurgery"></div>
+  </div>
+  <div class="field-row single">
+    <div class="field"><label>Current Medications &amp; Supplements <span class="req">*</span></label><textarea id="meds" rows="2" required placeholder="List all — or write None"></textarea></div>
+  </div>
+  <div class="field-row single">
+    <div class="field"><label>Allergies or skin sensitivities</label><textarea id="allergies" rows="2" placeholder="Nut oils, essential oils, latex — or write None"></textarea></div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">Your Goals</div>
+  <div class="field-row single">
+    <div class="field"><label>What has brought you to Lavender Health?</label><textarea id="reason" rows="3"></textarea></div>
+  </div>
+  <div class="field-row single">
+    <div class="field"><label>What are you hoping treatment will help with?</label><textarea id="goals" rows="3"></textarea></div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">Consent &amp; Agreements</div>
+
+  <div class="cancel-box">
+    <p><strong>Cancellation Policy</strong></p>
+    <p>Please give at least <strong>24 hours' notice</strong> to cancel or reschedule. Sessions cancelled with less than 24 hours' notice will be charged in full and the session forfeited.</p>
+    <label class="cancel-check"><input type="checkbox" id="cancelConsent" required><span>I have read and agree to the cancellation policy.</span></label>
+  </div>
+
+  <div class="photo-box">
+    <h4>Photography &amp; Social Media Consent</h4>
+    <p>Lavender Health is a small independent specialist practice. Sharing anonymous treatment images on social media genuinely helps other women find the care they need. Your face will <strong>never</strong> be shown. Your support is truly appreciated.</p>
+    <div class="photo-options">
+      <label class="photo-option"><input type="checkbox" id="photoClinic"><span>I consent to anonymous progress photos for clinical records.</span></label>
+      <label class="photo-option"><input type="checkbox" id="photoSocial"><span>I am happy for anonymous images to be shared on Lavender Health's social media.</span></label>
+    </div>
+  </div>
+
+  <div class="consent-box">
+    <p>I confirm the information provided is accurate. I understand it is my responsibility to inform Michelle of any changes during treatment.</p>
+    <label class="consent-check"><input type="checkbox" id="treatConsent" required><span>I consent to receive treatment from Michelle Burke at Lavender Health and may withdraw consent at any time.</span></label>
+  </div>
+
+  <div class="gdpr-box">
+    <h4>Data Protection &amp; Privacy (GDPR)</h4>
+    <p>Lavender Health (Michelle Burke) is the data controller. Your data is held solely to provide safe, effective care, stored securely for a minimum of 7 years, and will never be sold or shared without consent, except where required by law.</p>
+    <label class="gdpr-check"><input type="checkbox" id="gdprConsent" required><span>I consent to Lavender Health holding my personal data for the purposes described above.</span></label>
+  </div>
+
+  <div class="declaration-box">
+    <p>By typing your full name below you confirm that all information provided is accurate and that you have read, understood and agreed to everything above.</p>
+    <div class="field-row">
+      <div class="field"><label>Full Name (acts as your signature) <span class="req">*</span></label><input type="text" id="fullName" required placeholder="Type your full name"></div>
+      <div class="field"><label>Today's Date <span class="req">*</span></label><input type="date" id="sigDate" required></div>
+    </div>
+  </div>
+</div>
+
+<button class="submit-btn" id="submitBtn" onclick="submitForm()">Submit Form</button>
+</div>
+
+<div class="form-footer-note">Lavender Health &middot; The Lavender Room &middot; Strood, Kent ME2 &middot; lavender-health.com &middot; @thelavenderroomhc</div>
+</div>
+
+<script>
+emailjs.init("4_kp2N4xjsXFaLCEJ");
+
+function getChecked(cls){return Array.from(document.querySelectorAll('.'+cls+':checked')).map(e=>e.value).join(', ')||'None';}
+function getRadio(name){const e=document.querySelector('input[name="'+name+'"]:checked');return e?e.value:'Not answered';}
+function val(id){return document.getElementById(id).value||'Not provided';}
+function checked(id){return document.getElementById(id).checked?'Yes':'No';}
+
+function submitForm(){
+  const required=[
+    {id:'firstName',label:'First Name'},{id:'lastName',label:'Last Name'},
+    {id:'dob',label:'Date of Birth'},{id:'phone',label:'Phone'},
+    {id:'email',label:'Email'},{id:'weeks',label:'Weeks Pregnant'},
+    {id:'dueDate',label:'Due Date'},{id:'meds',label:'Medications'},
+    {id:'fullName',label:'Full Name'},{id:'sigDate',label:'Date'}
+  ];
+  for(const f of required){
+    if(!document.getElementById(f.id).value.trim()){
+      alert('Please complete: '+f.label);
+      document.getElementById(f.id).focus();
+      return;
+    }
+  }
+  if(!document.getElementById('cancelConsent').checked){alert('Please agree to the cancellation policy.');return;}
+  if(!document.getElementById('treatConsent').checked){alert('Please confirm treatment consent.');return;}
+  if(!document.getElementById('gdprConsent').checked){alert('Please confirm GDPR consent.');return;}
+
+  const btn=document.getElementById('submitBtn');
+  btn.disabled=true;btn.textContent='Sending...';
+
+  const params={
+    to_email:'michelle@lavender-health.com',
+    form_type:'Pregnancy Intake Form',
+    first_name:val('firstName'),
+    last_name:val('lastName'),
+    dob:val('dob'),
+    phone:val('phone'),
+    client_email:val('email'),
+    address:val('address'),
+    ec_name:val('ecName'),
+    ec_phone:val('ecPhone'),
+    weeks:val('weeks'),
+    due_date:val('dueDate'),
+    prev_preg:val('prevPreg'),
+    preg_type:getRadio('pregType'),
+    ivf:getRadio('ivf'),
+    midwife:val('midwife'),
+    hospital:val('hospital'),
+    high_risk:getRadio('highRisk'),
+    advised:getRadio('advised'),
+    risk_details:val('riskDetails'),
+    prev_loss:getRadio('prevLoss'),
+    loss_details:val('lossDetails'),
+    symptoms:getChecked('sym'),
+    pain:val('pain'),
+    conditions:getChecked('cond'),
+    pre_existing:val('preExisting'),
+    gp_name:val('gpName'),
+    gp_surgery:val('gpSurgery'),
+    medications:val('meds'),
+    allergies:val('allergies'),
+    reason:val('reason'),
+    goals:val('goals'),
+    cancel_consent:checked('cancelConsent'),
+    photo_clinic:checked('photoClinic'),
+    photo_social:checked('photoSocial'),
+    treat_consent:checked('treatConsent'),
+    gdpr_consent:checked('gdprConsent'),
+    full_name:val('fullName'),
+    sig_date:val('sigDate')
+  };
+
+  emailjs.send('service_tl6dtli','template_tscdrwh',params)
+    .then(()=>{
+      document.getElementById('form-wrap').style.display='none';
+      document.getElementById('success-screen').style.display='block';
+      window.scrollTo(0,0);
+    })
+    .catch(err=>{
+      console.error(err);
+      btn.disabled=false;
+      btn.textContent='Submit Form';
+      alert('There was a problem sending your form. Please try again or contact michelle@lavender-health.com directly.');
+    });
+}
+</script>
+</body>
+</html>
